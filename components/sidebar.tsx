@@ -2,18 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import {
   LayoutDashboard,
-  FileText,
   Users,
   Upload,
-  TrendingUp,
+  RefreshCw,
   Calculator,
-  Map,
+  Globe,
   Mail,
   Settings,
   MessageSquare,
   Menu,
+  LogOut,
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -21,6 +22,7 @@ interface NavItem {
   label: string;
   href: string;
   icon: React.ReactNode;
+  badge?: string;
 }
 
 interface NavSection {
@@ -35,27 +37,22 @@ const navigation: NavSection[] = [
       {
         label: "Dashboard & Reports",
         href: "/",
-        icon: <LayoutDashboard size={18} />,
-      },
-      {
-        label: "Certificate Management",
-        href: "/certificates",
-        icon: <FileText size={18} />,
+        icon: <LayoutDashboard size={20} />,
       },
     ],
   },
   {
-    title: "DATA MANAGEMENT",
+    title: "MANAGEMENT",
     items: [
       {
         label: "Suppliers",
         href: "/suppliers",
-        icon: <Users size={18} />,
+        icon: <Users size={20} />,
       },
       {
         label: "Data Imports",
         href: "/data-imports",
-        icon: <Upload size={18} />,
+        icon: <Upload size={20} />,
       },
     ],
   },
@@ -65,37 +62,33 @@ const navigation: NavSection[] = [
       {
         label: "Imports & Emissions",
         href: "/imports-emissions",
-        icon: <TrendingUp size={18} />,
+        icon: <RefreshCw size={20} />,
       },
       {
         label: "Cost Calculator",
         href: "/cost-calculator",
-        icon: <Calculator size={18} />,
+        icon: <Calculator size={20} />,
       },
       {
         label: "Cost Map",
         href: "/cost-map",
-        icon: <Map size={18} />,
+        icon: <Globe size={20} />,
+        badge: "NEW",
       },
     ],
   },
   {
-    title: "ACCOUNT",
+    title: "SUPPORT",
     items: [
       {
         label: "Contact Us",
         href: "/contact",
-        icon: <Mail size={18} />,
+        icon: <Mail size={20} />,
       },
       {
         label: "Settings",
         href: "/settings",
-        icon: <Settings size={18} />,
-      },
-      {
-        label: "Feedback",
-        href: "/feedback",
-        icon: <MessageSquare size={18} />,
+        icon: <Settings size={20} />,
       },
     ],
   },
@@ -103,60 +96,128 @@ const navigation: NavSection[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 flex flex-col" style={{ backgroundColor: "var(--sidebar-bg)" }}>
+    <aside
+      className={clsx(
+        "fixed left-0 top-0 h-screen flex flex-col border-r transition-all duration-300",
+        collapsed ? "w-16" : "w-64"
+      )}
+      style={{
+        backgroundColor: "var(--sidebar-bg)",
+        borderColor: "var(--sidebar-border)",
+      }}
+    >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-700">
-        <span className="text-sm text-slate-400">Navbar - 2</span>
+      <div
+        className={clsx(
+          "flex items-center border-b h-16 px-4",
+          collapsed ? "justify-center" : "justify-between"
+        )}
+        style={{ borderColor: "var(--sidebar-border)" }}
+      >
+        {!collapsed && (
+          <span className="text-lg font-bold text-gray-900">CBAM ESTIMATOR</span>
+        )}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="p-2 hover:bg-gray-100 rounded-md"
+        >
+          <Menu size={20} className="text-gray-600" />
+        </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-3">
-        <div className="rounded-lg border p-3" style={{ borderColor: "var(--sidebar-border)" }}>
-          {/* Menu icon */}
-          <div className="flex justify-end mb-2">
-            <button className="p-1 hover:bg-slate-700 rounded">
-              <Menu size={18} className="text-slate-400" />
-            </button>
-          </div>
-
-          {navigation.map((section, sectionIdx) => (
-            <div key={section.title} className={clsx(sectionIdx > 0 && "mt-4")}>
+      <nav className="flex-1 overflow-y-auto py-4">
+        {navigation.map((section, sectionIdx) => (
+          <div key={section.title} className={clsx(sectionIdx > 0 && "mt-6")}>
+            {!collapsed && (
               <h3
-                className="text-xs font-medium tracking-wider mb-2 px-2"
+                className="text-xs font-medium tracking-wider mb-2 px-4"
                 style={{ color: "var(--sidebar-section)" }}
               >
                 {section.title}
               </h3>
-              <ul className="space-y-1">
-                {section.items.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
+            )}
+            <ul className="space-y-1 px-2">
+              {section.items.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={clsx(
+                        "flex items-center gap-3 px-3 py-2.5 rounded-md text-sm transition-colors",
+                        collapsed && "justify-center",
+                        isActive
+                          ? "text-white"
+                          : "text-gray-700 hover:bg-gray-100"
+                      )}
+                      style={
+                        isActive
+                          ? { backgroundColor: "var(--sidebar-active)" }
+                          : undefined
+                      }
+                      title={collapsed ? item.label : undefined}
+                    >
+                      <span
                         className={clsx(
-                          "flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
-                          isActive
-                            ? "text-white"
-                            : "text-slate-300 hover:bg-slate-700"
+                          isActive ? "text-white" : "text-gray-500"
                         )}
-                        style={isActive ? { backgroundColor: "var(--sidebar-active)" } : undefined}
                       >
-                        <span className={clsx(isActive ? "text-white" : "text-slate-400")}>
-                          {item.icon}
-                        </span>
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
-        </div>
+                        {item.icon}
+                      </span>
+                      {!collapsed && (
+                        <>
+                          <span className="flex-1">{item.label}</span>
+                          {item.badge && (
+                            <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-emerald-500 text-white">
+                              {item.badge}
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </nav>
+
+      {/* Bottom items */}
+      <div
+        className="border-t py-4 px-2"
+        style={{ borderColor: "var(--sidebar-border)" }}
+      >
+        <Link
+          href="/feedback"
+          className={clsx(
+            "flex items-center gap-3 px-3 py-2.5 rounded-md text-sm text-gray-700 hover:bg-gray-100 transition-colors",
+            collapsed && "justify-center",
+            pathname === "/feedback" && "bg-gray-900 text-white"
+          )}
+          title={collapsed ? "Feedback" : undefined}
+        >
+          <MessageSquare
+            size={20}
+            className={pathname === "/feedback" ? "text-white" : "text-gray-500"}
+          />
+          {!collapsed && <span>Feedback</span>}
+        </Link>
+        <button
+          className={clsx(
+            "flex items-center gap-3 px-3 py-2.5 rounded-md text-sm text-gray-700 hover:bg-gray-100 transition-colors w-full mt-1",
+            collapsed && "justify-center"
+          )}
+          title={collapsed ? "Logout" : undefined}
+        >
+          <LogOut size={20} className="text-gray-500" />
+          {!collapsed && <span>Logout</span>}
+        </button>
+      </div>
     </aside>
   );
 }
