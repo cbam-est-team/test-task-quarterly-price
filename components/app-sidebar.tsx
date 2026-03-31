@@ -87,29 +87,31 @@ const supportItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
-  const { toggleSidebar, state } = useSidebar();
+  const { toggleSidebar } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border">
-        <div className="flex items-center justify-between px-2 py-2">
+    <Sidebar collapsible="offcanvas">
+      <SidebarHeader className="border-b border-sidebar-border bg-white text-slate-950">
+        <div className="flex items-center justify-between px-4 py-5">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-bold text-lg group-data-[collapsible=icon]:hidden">
+            <span className="text-3xl font-black tracking-tight">
               CBAM ESTIMATOR
             </span>
           </Link>
           <button
             onClick={toggleSidebar}
-            className="p-1 hover:bg-sidebar-accent rounded-md"
+            className="rounded-md p-1 text-slate-500 hover:bg-slate-100"
           >
             <Menu className="h-5 w-5" />
           </button>
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="px-3 py-4">
         <SidebarGroup>
-          <SidebarGroupLabel>MAIN</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-3 text-xs tracking-[0.14em] text-sidebar-foreground/70">
+            MAIN
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainItems.map((item) => (
@@ -131,7 +133,9 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>MANAGEMENT</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-3 text-xs tracking-[0.14em] text-sidebar-foreground/70">
+            MANAGEMENT
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {managementItems.map((item) => (
@@ -153,7 +157,9 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>INSIGHTS</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-3 text-xs tracking-[0.14em] text-sidebar-foreground/70">
+            INSIGHTS
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {insightItems.map((item) => (
@@ -169,7 +175,7 @@ export function AppSidebar() {
                     </Link>
                   </SidebarMenuButton>
                   {item.badge && (
-                    <SidebarMenuBadge className="bg-emerald-500 text-white text-[10px] px-1.5 rounded">
+                    <SidebarMenuBadge className="rounded-full bg-emerald-500/25 px-2 py-0.5 text-[10px] text-emerald-300">
                       {item.badge}
                     </SidebarMenuBadge>
                   )}
@@ -180,7 +186,9 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>SUPPORT</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-3 text-xs tracking-[0.14em] text-sidebar-foreground/70">
+            SUPPORT
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {supportItems.map((item) => (
