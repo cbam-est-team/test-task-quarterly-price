@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { AppHeader } from "@/components/app-header";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -21,8 +22,9 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarInset>
-            <main className="p-8">
+          <SidebarInset className="flex flex-col">
+            <AppHeader />
+            <main className="flex-1 p-8 overflow-auto">
               {children}
             </main>
           </SidebarInset>

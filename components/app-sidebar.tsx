@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
-  Database,
+  FileText,
   BarChart3,
   Calculator,
   Globe,
@@ -49,7 +49,7 @@ const managementItems = [
   {
     title: "Data Imports",
     url: "/data-imports",
-    icon: Database,
+    icon: FileText,
   },
 ];
 
@@ -87,29 +87,32 @@ const supportItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
-  const { toggleSidebar, state } = useSidebar();
+  const { toggleSidebar } = useSidebar();
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border">
-        <div className="flex items-center justify-between px-2 py-2">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-bold text-lg group-data-[collapsible=icon]:hidden">
+      <SidebarHeader className="border-b border-sidebar-border px-4 py-4">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center">
+            <span className="font-bold text-base tracking-wide text-white group-data-[collapsible=icon]:hidden">
               CBAM ESTIMATOR
             </span>
           </Link>
           <button
             onClick={toggleSidebar}
-            className="p-1 hover:bg-sidebar-accent rounded-md"
+            className="p-1.5 hover:bg-white/10 rounded-md transition-colors"
+            aria-label="Toggle sidebar"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-4 w-4 text-white/70" />
           </button>
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>MAIN</SidebarGroupLabel>
+      <SidebarContent className="px-2 pt-2">
+        <SidebarGroup className="p-0 pb-2">
+          <SidebarGroupLabel className="px-3 py-2 text-[11px] font-semibold tracking-wider text-teal-400 uppercase">
+            MAIN
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainItems.map((item) => (
@@ -118,10 +121,11 @@ export function AppSidebar() {
                     asChild
                     isActive={pathname === item.url}
                     tooltip={item.title}
+                    className="h-10 px-3 rounded-md text-white/90 hover:bg-teal-500 hover:text-white data-[active=true]:bg-teal-500 data-[active=true]:text-white"
                   >
                     <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4" />
+                      <span className="text-sm">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -130,8 +134,10 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>MANAGEMENT</SidebarGroupLabel>
+        <SidebarGroup className="p-0 pb-2">
+          <SidebarGroupLabel className="px-3 py-2 text-[11px] font-semibold tracking-wider text-teal-400 uppercase">
+            MANAGEMENT
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {managementItems.map((item) => (
@@ -140,10 +146,11 @@ export function AppSidebar() {
                     asChild
                     isActive={pathname === item.url}
                     tooltip={item.title}
+                    className="h-10 px-3 rounded-md text-white/90 hover:bg-teal-500 hover:text-white data-[active=true]:bg-teal-500 data-[active=true]:text-white"
                   >
                     <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4" />
+                      <span className="text-sm">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -152,8 +159,10 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>INSIGHTS</SidebarGroupLabel>
+        <SidebarGroup className="p-0 pb-2">
+          <SidebarGroupLabel className="px-3 py-2 text-[11px] font-semibold tracking-wider text-teal-400 uppercase">
+            INSIGHTS
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {insightItems.map((item) => (
@@ -162,14 +171,15 @@ export function AppSidebar() {
                     asChild
                     isActive={pathname === item.url}
                     tooltip={item.title}
+                    className="h-10 px-3 rounded-md text-white/90 hover:bg-teal-500 hover:text-white data-[active=true]:bg-teal-500 data-[active=true]:text-white"
                   >
                     <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4" />
+                      <span className="text-sm">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                   {item.badge && (
-                    <SidebarMenuBadge className="bg-emerald-500 text-white text-[10px] px-1.5 rounded">
+                    <SidebarMenuBadge className="bg-teal-500 text-white text-[10px] font-medium px-1.5 py-0.5 rounded">
                       {item.badge}
                     </SidebarMenuBadge>
                   )}
@@ -179,8 +189,10 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>SUPPORT</SidebarGroupLabel>
+        <SidebarGroup className="p-0 pb-2">
+          <SidebarGroupLabel className="px-3 py-2 text-[11px] font-semibold tracking-wider text-teal-400 uppercase">
+            SUPPORT
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {supportItems.map((item) => (
@@ -189,10 +201,11 @@ export function AppSidebar() {
                     asChild
                     isActive={pathname === item.url}
                     tooltip={item.title}
+                    className="h-10 px-3 rounded-md text-white/90 hover:bg-teal-500 hover:text-white data-[active=true]:bg-teal-500 data-[active=true]:text-white"
                   >
                     <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4" />
+                      <span className="text-sm">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -202,21 +215,31 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter>
-        <SidebarSeparator />
+      <SidebarFooter className="mt-auto px-2 pb-4">
+        <SidebarSeparator className="bg-sidebar-border mb-2" />
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Feedback">
+            <SidebarMenuButton
+              asChild
+              tooltip="Feedback"
+              className="h-10 px-3 rounded-md text-white/90 hover:bg-teal-500 hover:text-white"
+            >
               <Link href="/feedback">
-                <MessageSquare />
-                <span>Feedback</span>
+                <MessageSquare className="h-4 w-4" />
+                <span className="text-sm">Feedback</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
+        </SidebarMenu>
+        <SidebarSeparator className="bg-sidebar-border my-2" />
+        <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Logout">
-              <LogOut />
-              <span>Logout</span>
+            <SidebarMenuButton
+              tooltip="Logout"
+              className="h-10 px-3 rounded-md text-white/90 hover:bg-teal-500 hover:text-white"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="text-sm">Logout</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

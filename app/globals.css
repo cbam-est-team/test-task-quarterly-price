@@ -13,22 +13,24 @@
   --color-secondary-foreground: #1a1a2e;
   --color-muted: #f3f4f6;
   --color-muted-foreground: #6b7280;
-  --color-accent: #f3f4f6;
-  --color-accent-foreground: #1a1a2e;
+  --color-accent: #14b8a6;
+  --color-accent-foreground: #ffffff;
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
   --color-border: #e5e7eb;
   --color-input: #e5e7eb;
   --color-ring: #1a1a2e;
   
-  --color-sidebar: #ffffff;
-  --color-sidebar-foreground: #1a1a2e;
-  --color-sidebar-primary: #1a1a2e;
+  /* Dark navy sidebar */
+  --color-sidebar: #1e2a3b;
+  --color-sidebar-foreground: #ffffff;
+  --color-sidebar-primary: #14b8a6;
   --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #1a1a2e;
+  --color-sidebar-accent: #14b8a6;
   --color-sidebar-accent-foreground: #ffffff;
-  --color-sidebar-border: #e5e7eb;
-  --color-sidebar-ring: #1a1a2e;
+  --color-sidebar-border: #2d3a4d;
+  --color-sidebar-ring: #14b8a6;
+  --color-sidebar-muted: #5b6b7f;
 }
 
 * {
