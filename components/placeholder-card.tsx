@@ -5,10 +5,10 @@ interface PlaceholderCardProps {
 
 export function PlaceholderCard({ title, children }: PlaceholderCardProps) {
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-800/50 p-6">
-      <h2 className="text-lg font-semibold text-white mb-4">{title}</h2>
+    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">{title}</h2>
       {children || (
-        <div className="h-32 flex items-center justify-center text-slate-500">
+        <div className="h-32 flex items-center justify-center text-gray-400">
           Content placeholder
         </div>
       )}

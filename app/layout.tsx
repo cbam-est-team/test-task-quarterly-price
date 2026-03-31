@@ -6,8 +6,8 @@ import { Sidebar } from "@/components/sidebar";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "CBAM Dashboard",
-  description: "Carbon Border Adjustment Mechanism Dashboard",
+  title: "CBAM Estimator",
+  description: "Carbon Border Adjustment Mechanism Estimator",
 };
 
 export default function RootLayout({
@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <div className="flex min-h-screen">
+        <div className="min-h-screen">
           <Sidebar />
-          <main className="flex-1 ml-64 p-8">
+          <main className="ml-64 min-h-screen p-8 transition-all duration-300">
             {children}
           </main>
         </div>
