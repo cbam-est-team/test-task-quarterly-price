@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f1419;
+  --foreground: #ffffff;
+  --sidebar-bg: #1a1f2e;
+  --sidebar-border: #0d9488;
+  --sidebar-section: #5eead4;
+  --sidebar-active: #115e59;
+  --sidebar-hover: #1e293b;
+  --muted: #94a3b8;
+  --accent: #14b8a6;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
