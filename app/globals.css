@@ -21,14 +21,14 @@
   --color-input: #e5e7eb;
   --color-ring: #1a1a2e;
   
-  --color-sidebar: #ffffff;
-  --color-sidebar-foreground: #1a1a2e;
-  --color-sidebar-primary: #1a1a2e;
+  --color-sidebar: #061633;
+  --color-sidebar-foreground: #c6d3ea;
+  --color-sidebar-primary: #0c1f44;
   --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #1a1a2e;
+  --color-sidebar-accent: #1d2f4d;
   --color-sidebar-accent-foreground: #ffffff;
-  --color-sidebar-border: #e5e7eb;
-  --color-sidebar-ring: #1a1a2e;
+  --color-sidebar-border: #253a5a;
+  --color-sidebar-ring: #89a7d6;
 }
 
 * {
