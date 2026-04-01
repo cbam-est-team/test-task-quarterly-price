@@ -1,15 +1,24 @@
+"use client"
+
+import { SidebarTrigger } from "@/components/ui/sidebar"
+import { Separator } from "@/components/ui/separator"
+
 interface PageHeaderProps {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
 export function PageHeader({ title, description }: PageHeaderProps) {
   return (
-    <div className="mb-8">
-      <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
-      {description && (
-        <p className="mt-2 text-gray-500">{description}</p>
-      )}
-    </div>
-  );
+    <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <SidebarTrigger className="md:hidden" />
+      <Separator orientation="vertical" className="mr-2 h-4 md:hidden" />
+      <div className="flex flex-col">
+        <h1 className="text-lg font-semibold">{title}</h1>
+        {description && (
+          <p className="text-sm text-muted-foreground">{description}</p>
+        )}
+      </div>
+    </header>
+  )
 }
