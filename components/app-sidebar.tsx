@@ -91,21 +91,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <span className="font-bold text-base tracking-wide text-white group-data-[collapsible=icon]:hidden">
-              CBAM ESTIMATOR
-            </span>
-          </Link>
-          <button
-            onClick={toggleSidebar}
-            className="p-1.5 hover:bg-white/10 rounded-md transition-colors"
-            aria-label="Toggle sidebar"
-          >
-            <Menu className="h-4 w-4 text-white/70" />
-          </button>
-        </div>
+      <SidebarHeader className="h-16 border-b border-sidebar-border px-3 flex items-center justify-center">
+        <button
+          onClick={toggleSidebar}
+          className="p-2 hover:bg-white/10 rounded-md transition-colors"
+          aria-label="Toggle sidebar"
+        >
+          <Menu className="h-5 w-5 text-white/70" />
+        </button>
       </SidebarHeader>
 
       <SidebarContent className="px-2 pt-2">

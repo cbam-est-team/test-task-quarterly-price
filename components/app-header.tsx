@@ -1,23 +1,34 @@
 "use client";
 
+import Link from "next/link";
 import { User, ChevronDown, Building2 } from "lucide-react";
 
 export function AppHeader() {
   return (
     <header className="h-16 border-b border-border bg-white flex items-center justify-between px-6 shrink-0">
-      {/* Left section - User greeting */}
-      <div className="flex items-center gap-3">
-        <div className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center">
-          <User className="h-5 w-5 text-gray-500" />
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-foreground">
-            Hello, Max Mustermann!
+      {/* Left section - Logo and User greeting */}
+      <div className="flex items-center gap-6">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <span className="font-bold text-base tracking-wide text-[#1e2a3b]">
+            CBAM ESTIMATOR
           </span>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-teal-200 bg-teal-50 text-xs font-medium text-teal-700">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
-            Global Administrator
-          </span>
+        </Link>
+        
+        {/* User greeting */}
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center">
+            <User className="h-5 w-5 text-gray-500" />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-foreground">
+              Hello, Max Mustermann!
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-teal-200 bg-teal-50 text-xs font-medium text-teal-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+              Global Administrator
+            </span>
+          </div>
         </div>
       </div>
 

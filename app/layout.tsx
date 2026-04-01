@@ -22,9 +22,9 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarInset className="flex flex-col">
+          <SidebarInset className="flex flex-col min-h-screen">
             <AppHeader />
-            <main className="flex-1 p-8 overflow-auto">
+            <main className="flex-1 p-8 overflow-auto bg-background">
               {children}
             </main>
           </SidebarInset>
