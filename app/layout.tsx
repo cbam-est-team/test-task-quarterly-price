@@ -20,15 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset className="flex flex-col min-h-screen">
-            <AppHeader />
-            <main className="flex-1 p-8 overflow-auto bg-background">
-              {children}
-            </main>
-          </SidebarInset>
-        </SidebarProvider>
+        <div className="flex flex-col h-screen">
+          <AppHeader />
+          <div className="flex flex-1 overflow-hidden">
+            <SidebarProvider>
+              <AppSidebar />
+              <SidebarInset className="flex flex-col flex-1">
+                <main className="flex-1 p-8 overflow-auto bg-background">
+                  {children}
+                </main>
+              </SidebarInset>
+            </SidebarProvider>
+          </div>
+        </div>
       </body>
     </html>
   );

@@ -90,8 +90,8 @@ export function AppSidebar() {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarHeader className="h-16 border-b border-sidebar-border px-3 flex items-center justify-center">
+    <Sidebar collapsible="icon" className="border-r border-sidebar-border">
+      <SidebarHeader className="h-12 px-3 flex items-center justify-center border-b border-sidebar-border">
         <button
           onClick={toggleSidebar}
           className="p-2 hover:bg-white/10 rounded-md transition-colors"
