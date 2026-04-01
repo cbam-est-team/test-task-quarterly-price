@@ -12,7 +12,7 @@ export function AppHeader() {
         </div>
         <div className="flex items-center gap-2">
           <span className="text-sm font-medium text-foreground">
-            Hello, Victor Burge!
+            Hello, Max Mustermann!
           </span>
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-teal-200 bg-teal-50 text-xs font-medium text-teal-700">
             <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
